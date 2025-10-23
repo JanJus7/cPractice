@@ -41,7 +41,16 @@ void verlan(char s[]){
 }
 
 void generate_pwd(char newpwd[]){
-    printf("TODO : generate_pwd\n");
+    const int length = 15;
+    int i = 0;
+    while (i < length) {
+        char randomChar = rand() % 127;
+        if ( isgraph(randomChar) ) {
+            newpwd[i] = randomChar;
+            i++;
+        }
+    }
+    newpwd[length] = '\0';
 }
 
 /********************** EXERCICE 2 *************************/
