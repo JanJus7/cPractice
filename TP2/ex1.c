@@ -55,19 +55,57 @@ void generate_pwd(char newpwd[]){
 
 /********************** EXERCICE 2 *************************/
 
-void repetition_code(char src[], char code[]){
-	printf("TODO : repetition_code\n");
+void repetition_code(char src[], char code[])
+{
+    int i = 0;
+
+    while (src[i] != '\0')
+    {
+        code[3 * i] = src[i];
+        code[3 * i + 1] = src[i];
+        code[3 * i + 2] = src[i];
+        i++;
+    }
+    code[3 * i] = '\0';
 }
 
-int correction_code(char code[], char decode[]){
-	printf("TODO : correction_code\n");
-	return EXIT_SUCCESS;
+int correction_code(char code[], char decode[])
+{
+    int i = 0, indecodable = 0;
+    while (code[3 * i] != '\0')
+    {
+        if (code[3 * i] == code[3 * i + 1])
+        {
+            decode[i] = code[3 * i];
+        }
+        else if (code[3 * i + 1] == code[3 * i + 2])
+        {
+            decode[i] = code[3 * i + 1];
+        }
+        else if (code[3 * i] == code[3 * i + 2])
+        {
+            decode[i] = code[3 * i];
+        }
+        else
+        {
+            decode[i] = code[3 * i];
+            indecodable++;
+        }
+        i++;
+    }
+    decode[i] = '\0';
+    return indecodable;
 }
 
 
 int nombre_erreurs(char src[], char decodee[]){
-	printf("TODO : nombre_erreur\n");
-	return EXIT_SUCCESS;
+    int erreurs = 0;
+    for (int i = 0; src[i] != '\0'; i++) {
+        if (src[i] != decodee[i]) {
+            erreurs++;
+        }
+    }
+    return erreurs;
 }
 
 
