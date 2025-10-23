@@ -44,7 +44,7 @@ void generate_pwd(char newpwd[]){
     const int length = 15;
     int i = 0;
     while (i < length) {
-        char randomChar = rand() % 127;
+        char randomChar = rand() % 128;
         if ( isgraph(randomChar) ) {
             newpwd[i] = randomChar;
             i++;
