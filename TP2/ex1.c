@@ -3,6 +3,7 @@
 #include <ctype.h>
 #include <time.h>
 #include <string.h>
+#include <stdbool.h>
 
 /***************** EXERCICE 1 ************************/
 
@@ -111,15 +112,42 @@ int nombre_erreurs(char src[], char decodee[]){
 
 /********************** EXERCICE 3******************************/
 
+void delete_spaces(char src[], int i)
+{
+    int spaces = 0, j = 0;
+    while(isspace(src[i + spaces])) {
+        spaces+=1;
+    }
 
-void delete_spaces(char src[], int i){
-	printf("TODO : delete_spaces\n");
+    while(src[i+j+spaces] != '\0') {
+        src[i+j] = src[i+j+spaces];
+        j=j+1;
+    }
+    src[i+j] = '\0';
 }
 
 
 int wordlist_format(char src[], int nc){
-	printf("TODO : wordlist_format\n");
+	int i=0, wcount=0;
+    while(src[i] != '\0') {
+        delete_spaces(src, i);
+        while(src[i] != '\0' && !isspace(src[i])) {
+            i+=1;
+        }
+
+        wcount = (wcount+1);
+
+        if(src[i] != '\0' ) {
+            if ( wcount % nc ==0) {printf("TODO : wordlist_format\n");
 	return EXIT_SUCCESS;
+                src[i] = '\n';
+            } else {
+                src[i] = ' ';
+            }
+        }
+        i=i+1;
+    }
+    return wcount;
 }
 
 
@@ -127,7 +155,16 @@ int wordlist_format(char src[], int nc){
 
 
 void repetition_code_n(char src[], char code[], int n){
-	printf("TODO : repetition_code\n");
+	int i = 0;
+
+    while (src[i] != '\0')
+    {
+        for (int j =0; j<=n; j++) {
+            code[3 * i + n] = src[i];
+            i++;
+        }
+    }
+    code[3 * i] = '\0';
 }
 
 
